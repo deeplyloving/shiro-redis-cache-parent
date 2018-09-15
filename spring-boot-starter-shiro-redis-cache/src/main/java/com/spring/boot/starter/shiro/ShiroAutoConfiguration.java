@@ -42,8 +42,8 @@ public class ShiroAutoConfiguration {
 	private int cookieMaxAge = -1;
 	private String cookiePath = null;
 	
-	private String sessionCacheName=null;
-	private String authenticationCacheName=null;
+	private String sessionCacheName = null;
+	private String authenticationCacheName = null;
 	
 	private String prefix = null;
 	private String principalFiled = null;
