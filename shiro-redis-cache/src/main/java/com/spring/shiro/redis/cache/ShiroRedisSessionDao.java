@@ -8,18 +8,6 @@ import org.apache.shiro.session.mgt.eis.CachingSessionDAO;
 public class ShiroRedisSessionDao extends CachingSessionDAO{
 
 	
-	private ShiroRedisCacheManager shiroRedisCacheManager = null;
-	
-	public ShiroRedisCacheManager getShiroRedisCacheManager() {
-		return shiroRedisCacheManager;
-	}
-
-	public void setShiroRedisCacheManager(ShiroRedisCacheManager shiroRedisCacheManager) {
-		this.shiroRedisCacheManager = shiroRedisCacheManager;
-		this.setCacheManager(shiroRedisCacheManager);
-	}
-
-
 	@Override
 	protected void doUpdate(Session session) {
 		getCacheManager().getCache(getActiveSessionsCacheName()).put(session.getId(), session);
