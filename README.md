@@ -24,3 +24,4 @@ shiro-redis-cache  and session-shared
 	<artifactId>spring-boot-starter-data-redis</artifactId>
 </dependency>
 ```
+
