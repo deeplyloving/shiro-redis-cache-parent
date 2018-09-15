@@ -42,6 +42,9 @@ public class ShiroAutoConfiguration {
 	private int cookieMaxAge = -1;
 	private String cookiePath = null;
 	
+	private String sessionCacheName=null;
+	private String authenticationCacheName=null;
+	
 	private String prefix = null;
 	private String principalFiled = null;
 
@@ -132,7 +135,9 @@ public class ShiroAutoConfiguration {
 	@ConditionalOnMissingBean
 	public ShiroRedisSessionDao createRedisSessionDAO(ShiroRedisCacheManager shiroRedisCacheManager) {
 		ShiroRedisSessionDao redisSessionDAO = new ShiroRedisSessionDao();
-		redisSessionDAO.setShiroRedisCacheManager(shiroRedisCacheManager);
+		redisSessionDAO.setCacheManager(shiroRedisCacheManager);
+		if(sessionCacheName!=null && sessionCacheName.length()>0)
+			redisSessionDAO.setActiveSessionsCacheName(sessionCacheName);
 		return redisSessionDAO;
 	}
 
@@ -170,7 +175,9 @@ public class ShiroAutoConfiguration {
 
 		securityManager.setCacheManager(cacheManager);
 		securityManager.setSessionManager(sessionManager);
-
+		if(authenticationCacheName!=null && authenticationCacheName.length()>0)
+			realm.setAuthenticationCacheName(authenticationCacheName);
+		
 		return securityManager;
 	}
 
