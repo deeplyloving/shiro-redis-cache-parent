@@ -102,6 +102,7 @@ public class ShiroAutoConfiguration {
 	}
 
 	@Bean
+	@ConditionalOnMissingBean
 	public ShiroFilterFactoryBean shiroFilter(org.apache.shiro.mgt.SecurityManager securityManager) {
 		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 		shiroFilterFactoryBean.setSecurityManager(securityManager);
@@ -141,14 +142,6 @@ public class ShiroAutoConfiguration {
 		return redisSessionDAO;
 	}
 
-	@Bean
-	@ConditionalOnMissingBean
-	public CredentialsMatcher myCredentialsMatcher() {
-		HashedCredentialsMatcher credentialsMatcher = new HashedCredentialsMatcher();
-		credentialsMatcher.setHashAlgorithmName("MD5");// MD5加密
-		credentialsMatcher.setHashIterations(2);// 加密两次
-		return credentialsMatcher;
-	}
 
 	@Bean
 	@ConditionalOnMissingBean

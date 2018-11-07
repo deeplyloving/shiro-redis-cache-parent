@@ -13,7 +13,22 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<repositoryURL>http://192.168.4.213:9000/nexus/content/repositories/releases/</repositoryURL>
+		<snapshotRepositoryURL>http://192.168.4.213:9000/nexus/content/repositories/snapshots/</snapshotRepositoryURL>
 	</properties>
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>Nexus Release Repository</name>
+			<url>${repositoryURL}</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Nexus Snapshot Repository</name>
+			<url>${snapshotRepositoryURL}</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<modules>
 		<module>shiro-redis-cache</module>
@@ -33,4 +48,23 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<configuration>
+					<attach>true</attach>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
