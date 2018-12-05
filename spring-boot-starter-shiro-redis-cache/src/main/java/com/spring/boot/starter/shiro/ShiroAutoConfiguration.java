@@ -71,6 +71,40 @@ public class ShiroAutoConfiguration {
 	public void setCookiePath(String cookiePath) {
 		this.cookiePath = cookiePath;
 	}
+	
+	public String getSessionCacheName() {
+		return sessionCacheName;
+	}
+
+	public void setSessionCacheName(String sessionCacheName) {
+		this.sessionCacheName = sessionCacheName;
+	}
+
+	public String getAuthenticationCacheName() {
+		return authenticationCacheName;
+	}
+
+	public void setAuthenticationCacheName(String authenticationCacheName) {
+		this.authenticationCacheName = authenticationCacheName;
+	}
+
+	public String getPrefix() {
+		return prefix;
+	}
+
+	public void setPrefix(String prefix) {
+		this.prefix = prefix;
+	}
+
+	public String getPrincipalFiled() {
+		return principalFiled;
+	}
+
+	public void setPrincipalFiled(String principalFiled) {
+		this.principalFiled = principalFiled;
+	}
+
+
 
 	private Map<String, String> filterResource = new LinkedHashMap<String, String>();
 
